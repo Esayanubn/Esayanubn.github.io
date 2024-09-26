@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const collapsibles = document.querySelectorAll('.collapsible');
 
     collapsibles.forEach(item => {
-        const header = item.querySelector('h2');
+        const header = item.querySelector('h3');
         const content = item.querySelector('.content');
         
-        // 初始化所有section为折叠状态
+        // 初始化所有项目为折叠状态
         content.style.maxHeight = null;
         item.classList.remove('active');
 
@@ -17,14 +17,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
             }
-        });
-    });
-
-    const skillItems = document.querySelectorAll('#skills li');
-
-    skillItems.forEach(item => {
-        item.addEventListener('click', () => {
-            item.classList.toggle('highlight');
         });
     });
 
