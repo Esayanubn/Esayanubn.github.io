@@ -1,27 +1,24 @@
 // script.js
 document.addEventListener('DOMContentLoaded', (event) => {
-    const collapsibles = document.querySelectorAll('.collapsible');
+    const sections = document.querySelectorAll('section');
 
-    collapsibles.forEach(item => {
-        const header = item.querySelector('h3');
-        const content = item.querySelector('.content');
-        
-        // 初始化所有项目为折叠状态
-        content.style.maxHeight = null;
-        item.classList.remove('active');
+    sections.forEach(section => {
+        section.addEventListener('mouseenter', () => {
+            section.style.transform = 'scale(1.02)';
+        });
 
-        header.addEventListener('click', function() {
-            this.parentElement.classList.toggle('active');
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
+        section.addEventListener('mouseleave', () => {
+            section.style.transform = 'scale(1)';
         });
     });
 
-    const headerTitle = document.querySelector('header h1');
-    typeWriter(headerTitle, 'Kefan Xu');
+    const skillItems = document.querySelectorAll('#skills li');
+
+    skillItems.forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('highlight');
+        });
+    });
 });
 
 function typeWriter(element, text, speed = 50) {
@@ -36,3 +33,6 @@ function typeWriter(element, text, speed = 50) {
     }
     type();
 }
+
+const headerTitle = document.querySelector('header h1');
+typeWriter(headerTitle, 'Kefan Xu');
